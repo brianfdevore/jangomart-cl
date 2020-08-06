@@ -5,8 +5,8 @@ yum install -y php
 yum install -y wget 
 
 cd /var/www/html
-wget https://github.com/linuxacademy/content-aws-csa2019/raw/master/lesson_files/07_hybrid_scaling/1_LBandASG/ALB/index.php
-wget https://github.com/linuxacademy/content-aws-csa2019/raw/master/lesson_files/07_hybrid_scaling/1_LBandASG/ALB/htaccess
+wget https://raw.githubusercontent.com/brianfdevore/jangomart-cl/master/website/index.php
+wget https://raw.githubusercontent.com/brianfdevore/jangomart-cl/master/website/htaccess
 mv /var/www/html/htaccess /var/www/html/.htaccess
 
 checkconfig httpd on
