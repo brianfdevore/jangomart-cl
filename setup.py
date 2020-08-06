@@ -9,22 +9,27 @@ setuptools.setup(
     name="jangomart_cl",
     version="0.0.1",
 
-    description="A sample CDK Python app",
+    description="A CDK Python app which defines and provisions AWS cloud resources and configuration necessary for the JangoMart Customer Loyalty application.",
     long_description=long_description,
     long_description_content_type="text/markdown",
 
-    author="author",
+    author="Brian F. DeVore",
 
     package_dir={"": "jangomart_cl"},
     packages=setuptools.find_packages(where="jangomart_cl"),
 
     install_requires=[
-        "aws-cdk.core==1.47.0",
-        "aws-cdk.aws_iam==1.47.0",
-        "aws-cdk.aws_sqs==1.47.0",
-        "aws-cdk.aws_sns==1.47.0",
-        "aws-cdk.aws_sns_subscriptions==1.47.0",
-        "aws-cdk.aws_s3==1.47.0",
+        "aws-cdk.core",
+        "aws-cdk.aws_iam",
+        "aws-cdk.aws_ec2",
+        "aws-cdk.aws_route53",
+        "aws-cdk.aws_cloudfront",
+        "aws-cdk.aws_elasticloadbalancingv2",
+        "aws-cdk.aws_autoscaling",
+        "aws-cdk.aws_s3",
+        "aws-cdk.aws_efs",
+        "aws-cdk.aws_rds",
+        "aws-cdk.aws_elasticache",
     ],
 
     python_requires=">=3.6",
