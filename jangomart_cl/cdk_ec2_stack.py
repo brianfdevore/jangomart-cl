@@ -48,8 +48,8 @@ class CdkEC2Stack(core.Stack):
         # Create Autoscaling Group with fixed 2*EC2 hosts
         self.asg = autoscaling.AutoScalingGroup(self, "jmASG",
                                                 vpc=vpc,
-                                                vpc_subnets=ec2.SubnetSelection(subnet_group_name="Bastion"),
-                                                associate_public_ip_address=True,
+                                                vpc_subnets=ec2.SubnetSelection(subnet_group_name="App-Private"),
+                                                #associate_public_ip_address=True,
                                                 instance_type=ec2.InstanceType(instance_type_identifier=ec2_type),
                                                 machine_image=linux_ami,
                                                 key_name=key_name,
@@ -75,7 +75,7 @@ class CdkEC2Stack(core.Stack):
                                                 )
 
         self.asg.connections.allow_from(alb, ec2.Port.tcp(80), "JangoMart ALB access for port 80 of EC2 in JangoMart ASG")
-        self.asg.connections.allow_from_any_ipv4(ec2.Port.tcp(22), "Allow SSH connection from Brians office")
+        self.asg.connections.allow_from_any_ipv4(ec2.Port.tcp(22), "Allow SSH connection from anywhere (for demo only)")
         listener.add_targets("addTargetGroup",
                              port=80,
                              targets=[self.asg])

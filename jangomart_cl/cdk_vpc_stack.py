@@ -18,7 +18,7 @@ class CdkVPCStack(core.Stack):
                 cidr_mask=24           
             ),
             ec2.SubnetConfiguration(
-                subnet_type=ec2.SubnetType.ISOLATED,
+                subnet_type=ec2.SubnetType.PRIVATE,
                 name="App-Private",
                 cidr_mask=24           
             ),
@@ -27,8 +27,8 @@ class CdkVPCStack(core.Stack):
                 name="DB-Private",
                 cidr_mask=24
             )],
-            #nat_gateway_provider=ec2.NatProvider.gateway(),
-            nat_gateways=0,
+            nat_gateway_provider=ec2.NatProvider.gateway(),
+            nat_gateways=1,
             )
 
         core.CfnOutput(self, "Output",

@@ -30,6 +30,9 @@ setuptools.setup(
         "aws-cdk.aws_efs",
         "aws-cdk.aws_rds",
         "aws-cdk.aws_elasticache",
+        "aws-cdk.aws_codedeploy",
+        "aws-cdk.aws_codepipeline",
+        "aws-cdk.aws_codepipeline_actions"
     ],
 
     python_requires=">=3.6",
