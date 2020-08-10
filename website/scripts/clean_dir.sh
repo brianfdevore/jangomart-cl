@@ -1,8 +1,5 @@
 #!/bin/bash
-
-isExistFile = "/var/www/html/index.php"
-
-if [[ -e "$isExistFile" ]]
-then
+FILE=/var/www/html/index.php
+if test -f "$FILE"; then
     rm /var/www/html/index.php
 fi
