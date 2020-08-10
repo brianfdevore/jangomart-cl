@@ -1,0 +1,14 @@
+version: 0.0
+os: Linux
+files:
+  - source: /website/index.php
+    destination: /var/www/html/
+hooks:
+  ApplicationStart:
+    - location: website/scripts/start_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: website/scripts/stop_server.sh
+      timeout: 300
+      runas: root

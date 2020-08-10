@@ -9,6 +9,6 @@ app = core.App()
 
 vpc_stack = CdkVPCStack(app, "cdk-vpc", env={'region': 'us-east-1'})
 ec2_stack = CdkEC2Stack(app, "cdk-ec2", vpc=vpc_stack.vpc, env={'region': 'us-east-1'})
-#cicd_stack = CdkCICDStack(app, "cdk-cicd", vpc=vpc_stack.vpc, env={'region': 'us-east-1'})
+#cicd_stack = CdkCICDStack(app, "cdk-cicd", asg=ec2_stack.asg, env={'region': 'us-east-1'})
 
 app.synth()
