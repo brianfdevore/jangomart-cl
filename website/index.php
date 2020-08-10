@@ -3,7 +3,7 @@
 <body style="margin-top: 100px;">
 <h1 style="color: orange;">
 <center>
-JangoMart Customer Loyalty Portal V3
+JangoMart Customer Loyalty Portal V4
 </center>
 </h1>
 <h2>
