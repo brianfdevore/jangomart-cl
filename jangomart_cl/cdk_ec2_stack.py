@@ -92,42 +92,42 @@ class CdkEC2Stack(core.Stack):
                                                         #role="CodeDeployServiceRole", # <-- syntax error here
                                                         deployment_config=codedeploy.ServerDeploymentConfig.ALL_AT_ONCE)
 
-        #Create CodePipeline
-        pipeline = codepipeline.Pipeline(self, "CodePipeline",
-                                    pipeline_name="JangoMartPipeline",
-                                    #role="CodePipeline-Service-Role" # <-- syntax error here
-        )
+        # #Create CodePipeline
+        # pipeline = codepipeline.Pipeline(self, "CodePipeline",
+        #                             pipeline_name="JangoMartPipeline",
+        #                             #role="CodePipeline-Service-Role" # <-- syntax error here
+        # )
         
-        source_output = codepipeline.Artifact()
+        # source_output = codepipeline.Artifact()
         
-        #Set up source action for the Source stage of pipeline
-        source_action = codepipeline_actions.GitHubSourceAction(
-                action_name="GitHub_Source",
-                owner="brianfdevore",
-                repo="jangomart-cl",
-                oauth_token=core.SecretValue.secrets_manager("my-github-token"),
-                output=source_output,
-                #branch="master",
-                trigger=codepipeline_actions.GitHubTrigger.POLL
-        )
+        # #Set up source action for the Source stage of pipeline
+        # source_action = codepipeline_actions.GitHubSourceAction(
+        #         action_name="GitHub_Source",
+        #         owner="brianfdevore",
+        #         repo="jangomart-cl",
+        #         oauth_token=core.SecretValue.secrets_manager("my-github-token"),
+        #         output=source_output,
+        #         #branch="master",
+        #         trigger=codepipeline_actions.GitHubTrigger.WEBHOOK
+        # )
 
-        #Set up Deploy action for Deploy stage of pipeline
-        deploy_action = codepipeline_actions.CodeDeployServerDeployAction(
-                action_name="CodeDeploy",
-                input=source_output,
-                deployment_group=deploymentgroup
-        )
+        # #Set up Deploy action for Deploy stage of pipeline
+        # deploy_action = codepipeline_actions.CodeDeployServerDeployAction(
+        #         action_name="CodeDeploy",
+        #         input=source_output,
+        #         deployment_group=deploymentgroup
+        # )
 
-        #Add the stages defined above to the pipeline
-        pipeline.add_stage(
-                stage_name="Source",
-                actions=[source_action]
-        )
+        # #Add the stages defined above to the pipeline
+        # pipeline.add_stage(
+        #         stage_name="Source",
+        #         actions=[source_action]
+        # )
 
-        pipeline.add_stage(
-                stage_name="Deploy",
-                actions=[deploy_action]
-        )
+        # pipeline.add_stage(
+        #         stage_name="Deploy",
+        #         actions=[deploy_action]
+        # )
 
         #Output CFN ALB DNS Name to access web application
         core.CfnOutput(self, "ALBOutput",
