@@ -53,6 +53,7 @@ class CdkEC2Stack(core.Stack):
                                     open=True)
         
         # Create Autoscaling Group (initial config is with 2 EC2 hosts)
+
         self.asg = autoscaling.AutoScalingGroup(self, "jmASG",
                                                 vpc=vpc,
                                                 vpc_subnets=ec2.SubnetSelection(subnet_group_name="App-Private"),
