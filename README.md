@@ -1,4 +1,27 @@
 
+This project was done as part of a job interview to demonstrate presentation, design, architecture, and engineering skills.
+
+The documents in the "docs" folder are .odp (Open Document Format) formatted downloads from the Google Docs (2) and Google Slides (1)
+documents.  To access these documents directly in Google Drive (recommended), please use the link below:
+
+https://drive.google.com/drive/folders/1bfQ6naaM2jEgvMbc1W_0IuyEAcmnBOAG?usp=sharing
+
+This project is a CDK application which spins up a portion of the core architecture for the JangoMart Customer Loyalty application, which
+includes VPC and networking, subnets, NAT Gateway, ALB, ASG, and EC2.
+
+In its current state, running the "cdk deploy * " command will deploy 2 stacks (cdk-vpc, cdk-ec2) and provide as output the public DNS
+for the ALB.  2 t2.micro EC2 instances (Amazon Linux 2 base AMI) will be provisioned, but will run the bootstrap scripts (see the "user_data" folder) to install packages and configure the application, which is a simple PHP website with just 1 page (see index.php for the source code).
+
+Additionally, CodeDeploy agents are installed to enable automated deployment in a CI/CD pipeline (CodePipeline).
+
+Note that in order to use this, you will need to manually edit the IAM policy document associated with the EC2 role which is defined and provisioned in the CDK deployment.  You need to allow the EC2 instances to access all buckets ("*" in the resources section).
+
+Run "cdk destroy * " when done to delete all resources.
+
+
+
+# Below is the default CDK README.md documentation text
+
 # Welcome to your CDK Python project!
 
 You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`jangomart_cl_stack`)
